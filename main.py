@@ -18,3 +18,13 @@ def download_video(url):
         return False, f"Error downloading video: {str(e)}"
 
 
+#Add Download Button and Trigger Download
+if st.button('Download Video'):
+    success, message = download_video(video_url)
+    if success:
+        st.success(message)
+    else:
+        st.error(message)
+
+
+
