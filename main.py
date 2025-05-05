@@ -7,3 +7,14 @@ st.title('YouTube Video Downloader')
 #Create Input Field for YouTube URL
 video_url = st.text_input('Enter the YouTube video URL')
 
+# Define Function to Download Video
+def download_video(url):
+    try:
+        yt = YouTube(url)
+        stream = yt.streams.get_highest_resolution()
+        stream.download()
+        return True, f"Video downloaded successfully: {stream.title}"
+    except Exception as e:
+        return False, f"Error downloading video: {str(e)}"
+
+
